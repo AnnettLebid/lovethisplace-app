@@ -1,11 +1,31 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
 
 function App() {
   return (
-    <div>
-      <h1>App</h1>
-    </div>
+    <Container maxwidth="lg">
+      <AppBar position="static" color="inherit">
+        <Typography variant="h2" align="center">
+          LoveThisPlace
+        </Typography>
+      </AppBar>
+      <Grow in>
+        <Container>
+          <Grid container 
+            justify="space-between" 
+            alignItems="stretch"
+            spacing={3}>
+              <Grid item xs={12} sm={7}>
+                <Posts />
+              </Grid>
+              <Grid item xs={12} sm={4}>
+                <Form />
+              </Grid>
+          </Grid>
+        </Container>
+      </Grow>
+     
+    </Container>
   );
 }
 
