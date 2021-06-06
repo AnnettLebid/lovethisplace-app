@@ -5,18 +5,17 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+import './index.css'
 
 import reducers from './reducers/';
 
 const store = createStore(reducers, compose(applyMiddleware(thunk)));
 
 
-ReactDOM.render(
-  <React.StrictMode>
+ReactDOM.render( 
     <Provider store={store}>
       <App />
-    </Provider>
-  </React.StrictMode>,
+    </Provider>,  
   document.getElementById('root')
 );
 
