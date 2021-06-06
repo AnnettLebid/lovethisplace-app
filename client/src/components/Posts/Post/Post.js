@@ -35,7 +35,7 @@ const Post = ({ post, setCurrentId }) => {
           <Typography className={classes.title} variant="h5" gutterBottom>{post.message}</Typography>
         </CardContent>
         <CardActions className={classes.cardActions}>
-          <Button size="small" color="primary" onClick={() => {}}>
+          {/* <Button size="small" color="primary" onClick={() => {}}>
             <FavoriteBorderIcon fontSize="small" />
             Like
             {post.likeCount}
@@ -43,7 +43,7 @@ const Post = ({ post, setCurrentId }) => {
           <Button size="small" color="primary" onClick={() => {}}>
             <DeleteIcon fontSize="small" />
             Delete            
-          </Button>
+          </Button> */}
         </CardActions>
     </Card>
   )
