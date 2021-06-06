@@ -7,7 +7,7 @@ import { DeleteIcon } from '@material-ui/icons/Delete';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 
 
-const Post = ({ post }) => {  
+const Post = ({ post, setCurrentId }) => {  
   const classes = useStyles();
 
   return( 
