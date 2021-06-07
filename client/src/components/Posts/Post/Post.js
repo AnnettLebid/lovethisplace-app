@@ -6,7 +6,7 @@ import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import  DeleteIcon from '@material-ui/icons/Delete';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
-import { deletePost } from '../../../actions/posts';
+import { deletePost, likePost } from '../../../actions/posts';
 
 
 const Post = ({ post, setCurrentId }) => {  
@@ -40,7 +40,7 @@ const Post = ({ post, setCurrentId }) => {
         </CardContent>
         <CardActions className={classes.cardActions}>
           <Button size="small" color="primary">
-            <FavoriteBorderIcon fontSize="small" />            
+            <FavoriteBorderIcon fontSize="small" onClick={() => dispatch(likePost(post._id))} />            
             {post.likeCount}
           </Button>
           <Button size="small" color="primary">
