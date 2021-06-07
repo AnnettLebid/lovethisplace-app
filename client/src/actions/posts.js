@@ -13,7 +13,7 @@ export const getPosts = () => async (dispatch) => {
 }
 
 export const createPost = (post) => async (dispatch) => {
-  console.log('going to create', post)
+  
   try {
     const { data } = await api.createPost(post);
 
@@ -38,5 +38,15 @@ export const deletePost = (id) => async (dispatch) => {
     dispatch({ type: 'DELETE',  payload: id });
   } catch (error) {
     console.log(error.message);
+  }
+}
+
+export const likePost = (id) => async (dispatch) => {
+  try {
+    const { data } = await api.likePost(id);
+
+    dispatch({ type: 'LIKE', payload: data })
+  } catch (error) {
+    console.log(error.message)
   }
 }
