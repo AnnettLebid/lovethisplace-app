@@ -15,6 +15,10 @@ app.use(cors());
 
 app.use('/posts', postRoutes);
 
+app.get('/', (req, res) => {
+  res.send("LoveThisPlace API")
+});
+
 const CONNECTION_URL = process.env.MONGO_URI;
 const PORT = process.env.PORT || 5000;
 
