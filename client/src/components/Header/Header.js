@@ -1,7 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@material-ui/core";
 import useStyles from './styles';
-import Background from '../../images/hero-unsplash.jpg';
 
 export default function Header() {  
   const classes = useStyles();
