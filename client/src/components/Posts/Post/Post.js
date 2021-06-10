@@ -40,8 +40,8 @@ const Post = ({ post, setCurrentId }) => {
         </CardContent>
         <CardActions className={classes.cardActions}>
           <Button size="small" color="primary">
-            <FavoriteBorderIcon fontSize="small" onClick={() => dispatch(likePost(post._id))} />            
-            {post.likeCount}
+            <FavoriteBorderIcon fontSize="small" color="secondary" onClick={() => dispatch(likePost(post._id))} />            
+            &nbsp;{post.likeCount}
           </Button>
           <Button size="small" color="primary">
             <DeleteIcon fontSize="small"  onClick={() => dispatch(deletePost(post._id))}/>                       
