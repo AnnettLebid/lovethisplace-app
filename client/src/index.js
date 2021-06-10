@@ -5,7 +5,9 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import './index.css'
+import { ThemeProvider } from '@material-ui/styles';
+import './index.css';
+import theme  from './theme';
 
 import reducers from './reducers/';
 
@@ -13,9 +15,11 @@ const store = createStore(reducers, compose(applyMiddleware(thunk)));
 
 
 ReactDOM.render( 
+  <ThemeProvider theme={theme}>
     <Provider store={store}>
       <App />
-    </Provider>,  
+    </Provider>
+  </ThemeProvider>, 
   document.getElementById('root')
 );
 
