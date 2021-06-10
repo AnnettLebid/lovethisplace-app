@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Typography, Grow, Grid } from '@material-ui/core';
+import { Container, Grow, Grid } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 
 import { getPosts } from './actions/posts';
 import Posts from './components/Posts/Posts';
 import Form from './components/Form/Form';
+import Header from './components/Header/Header';
 import useStyles from './styles';
 
 function App() {
@@ -17,28 +18,27 @@ function App() {
   },[dispatch]);
 
   return (
-    <Container maxwidth="lg">
-      <Typography className={classes.heading} variant="h2" align="center">
-        LoveThisPlace
-      </Typography>    
-      <Grow in>
-        <Container>
-          <Grid container 
-            className={classes.mainContainer}
-            justify="space-between" 
-            alignItems="stretch"
-            spacing={3}>
-              <Grid item xs={12} sm={7}>
-                <Posts currentId={currentId}  setCurrentId={setCurrentId}/>
-              </Grid>
-              <Grid item xs={12} sm={4}>
-                <Form currentId={currentId}  setCurrentId={setCurrentId}/>
-              </Grid>
-          </Grid>
-        </Container>
-      </Grow>
-     
-    </Container>
+    <>
+      <Header />
+      <Container maxWidth="lg">      
+        <Grow in>
+          <Container>
+            <Grid container 
+              className={classes.mainContainer}
+              justify="space-between" 
+              alignItems="stretch"
+              spacing={3}>
+                <Grid item xs={12} sm={7}>
+                  <Posts currentId={currentId}  setCurrentId={setCurrentId}/>
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                  <Form currentId={currentId}  setCurrentId={setCurrentId}/>
+                </Grid>
+            </Grid>
+          </Container>
+        </Grow>     
+      </Container>
+    </>
   );
 }
 
