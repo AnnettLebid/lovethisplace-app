@@ -45,7 +45,7 @@ const Form = ({ currentId, setCurrentId }) => {
         noValidate 
         className={`${classes.root} ${classes.form}`} 
         onSubmit={handleSubmit}>
-        <Typography variant="h6">{currentId ? `Editing a loveplace` : `Creating a new loveplace`}</Typography>
+        <Typography variant="h6">{currentId ? `Edit a loveplace` : `Create a new loveplace`}</Typography>
         <TextField 
           name="creator" 
           variant="outlined" 
@@ -88,16 +88,15 @@ const Form = ({ currentId, setCurrentId }) => {
         <Button 
           className={classes.buttonSubmit} 
           variant="contained" 
-          color="primary" 
           size="large" 
           type="submit"
           fullWidth
           >Submit
         </Button>
-        <Button           
-          variant="contained" 
-          color="secondary" 
-          size="small" 
+        <Button     
+        className={classes.buttonClear}       
+          variant="contained"          
+          size="large" 
           onClick={clear}
           fullWidth
           >Clear
