@@ -8,6 +8,7 @@ import { createPost, updatePost } from '../../actions/posts';
 const Form = ({ currentId, setCurrentId }) => {
   const [postData, setPostData] = useState({
     creator: '',
+    city: '',
     title: '',
     message: '',
     tags: '',
@@ -35,7 +36,7 @@ const Form = ({ currentId, setCurrentId }) => {
 
   const clear = () => {
     setCurrentId(null);
-    setPostData({creator: '', title: '', message: '', tags: '', selectedFile: ''});
+    setPostData({creator: '', city: '', title: '', message: '', tags: '', selectedFile: ''});
   }
 
   return(
@@ -53,6 +54,14 @@ const Form = ({ currentId, setCurrentId }) => {
           fullWidth
           value={postData.creator}
           onChange={(e) => setPostData({ ...postData, creator: e.target.value })}
+        />
+         <TextField 
+          name="city" 
+          variant="outlined" 
+          label="City" 
+          fullWidth
+          value={postData.city}
+          onChange={(e) => setPostData({ ...postData, city: e.target.value })}
         />
         <TextField 
           name="title" 
