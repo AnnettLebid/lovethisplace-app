@@ -17,10 +17,10 @@ export default makeStyles({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    borderRadius: '15px',
+    // borderRadius: '15px', move to inline style because it is not applied on production Netlify
     height: '100%',
     position: 'relative',
-    transition:'ease 0.5s',    
+    // transition:'ease 0.5s',  move to inline style because it is not applied on production Netlify  
     '&:hover': { transform: 'scale(1.03)' }
   },
   overlay: {

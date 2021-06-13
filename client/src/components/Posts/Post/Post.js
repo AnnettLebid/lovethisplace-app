@@ -14,7 +14,7 @@ const Post = ({ post, setCurrentId }) => {
   const dispatch = useDispatch();
 
   return( 
-    <Card className={classes.card}>
+    <Card className={classes.card}  style={{transition:'ease 0.5s', borderRadius: '15px'}}>
       <CardMedia 
         className={classes.media} 
         image={post.selectedFile}
