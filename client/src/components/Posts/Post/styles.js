@@ -20,8 +20,8 @@ export default makeStyles({
     borderRadius: '15px',
     height: '100%',
     position: 'relative',
-    transition:"ease 0.5s",    
-    "&:hover": { transform: "scale(1.03);" }
+    transition:'ease 0.5s',    
+    '&:hover': { transform: 'scale(1.03)' }
   },
   overlay: {
     position: 'absolute',
