@@ -8,7 +8,7 @@ export default makeStyles(() => ({
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     width:"100%",
-    height: "500px",
+    height: "400px",
     position: "relative",
     display: "flex",
     flexDirection: "column",
