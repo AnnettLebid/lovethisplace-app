@@ -17,7 +17,9 @@ function App() {
           <NavBar />
           <Header />
       </Box>   
-      <Home />   
+      <Switch>
+        <Route path="/" exact component={Home} />        
+      </Switch>     
     </Router>
   );
 }
