@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Grow, Grid } from '@material-ui/core';
+import { Box, Container, Grow, Grid } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 
 import { getPosts } from './actions/posts';
 import Posts from './components/Posts/Posts';
 import Form from './components/Form/Form';
 import Header from './components/Header/Header';
+import NavBar from './components/NavBar/NavBar';
 import useStyles from './styles';
 
 function App() {
@@ -18,8 +19,11 @@ function App() {
   },[dispatch]);
 
   return (
-    <>
-      <Header />
+    <>         
+      <Box className={classes.container}>
+          <NavBar />
+          <Header />
+      </Box>
       <Container maxWidth="lg">      
         <Grow in>
           <Container>
