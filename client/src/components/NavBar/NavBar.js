@@ -5,12 +5,14 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import AccountCircle from '@material-ui/icons/AccountCircle';
 import {Link} from 'react-router-dom';
 import useStyles from './styles';
 
 
 const NavBar = () => {
   const classes = useStyles();
+  const user = null;
   return (
     <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none'}}>
       <Toolbar>
@@ -20,7 +22,9 @@ const NavBar = () => {
         <Typography component={Link} to="/" variant="h6" className={classes.title}>
           LoveThisPlace
         </Typography>
-        <Button color="inherit">Login</Button>
+        {user ? <AccountCircle /> : (
+          <Button component={Link} to="/auth" variant="outlined" color="inherit">Login</Button>
+        )}
       </Toolbar>
   </AppBar>
   )
