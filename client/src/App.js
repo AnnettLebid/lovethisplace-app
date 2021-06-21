@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Header from './components/Header/Header';
 import NavBar from './components/NavBar/NavBar';
 import Home from './components/Home/Home';
+import Auth from './components/Auth/Auth';
 import useStyles from './styles';
 
 function App() {  
@@ -18,7 +19,8 @@ function App() {
           <Header />
       </Box>   
       <Switch>
-        <Route path="/" exact component={Home} />        
+        <Route path="/" exact component={Home} />
+        <Route path="/auth" exact component={Auth} />        
       </Switch>     
     </Router>
   );
