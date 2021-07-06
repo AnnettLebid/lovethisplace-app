@@ -4,7 +4,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import {Link} from 'react-router-dom';
 import useStyles from './styles';
@@ -12,21 +11,41 @@ import useStyles from './styles';
 
 const NavBar = () => {
   const classes = useStyles();
-  const user = null;
+  const user = true;
   return (
-    <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none'}}>
-      <Toolbar>
-        <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-          <MenuIcon />
-        </IconButton>
-        <Typography component={Link} to="/" variant="h6" className={classes.title}>
-          LoveThisPlace
-        </Typography>
-        {user ? <AccountCircle /> : (
-          <Button component={Link} to="/auth" variant="outlined" color="inherit">Login</Button>
-        )}
-      </Toolbar>
-  </AppBar>
+    <div className={classes.grow}>
+      <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none'}}>
+        <Toolbar>
+          <Typography component={Link} to="/" variant="h6" className={classes.title} style={{textDecoration: 'none',}}>
+            LoveThisPlace
+          </Typography>        
+          <div className={classes.grow} />
+          { user ? (
+            <div>
+              <div className={classes.sectionAuth}>           
+                <IconButton
+                  edge="end"
+                  aria-label="account of current user"             
+                  aria-haspopup="true"
+                  // onClick={}
+                  color="inherit"
+                >
+                  <AccountCircle />
+                </IconButton>
+                <div>
+                  <Button className={classes.loginButton} component={Link} to="/auth" variant="outlined" color="inherit">Logout</Button>
+                </div>
+              </div>              
+            </div>
+            ) : (
+            <div>
+              <Button component={Link} to="/auth" variant="outlined" color="inherit">Sign In</Button>
+            </div>
+            )
+          }
+        </Toolbar>
+      </AppBar>
+    </div>
   )
 }
 
