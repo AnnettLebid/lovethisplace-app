@@ -16,8 +16,13 @@ const Auth = () => {
   const handleChange = () => {}
   const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
   const switchMode = () => setIsSignUp((previsSignUp) => !previsSignUp);
-  const responseGoogle = (response) => {
+
+  const responseSuccess = async (response) => {
     console.log(response);
+  }
+
+  const responseFailure = async () => {
+    console.log("Couldn't sign you in")
   }
 
   return (
@@ -56,13 +61,13 @@ const Auth = () => {
               >Sign In with Google
               </Button>
             )}
-            onSuccess={responseGoogle}
-            onFailure={responseGoogle}
+            onSuccess={responseSuccess}
+            onFailure={responseFailure}
           />
           <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
             {isSignUp ? "Sign Up" : "Sign In"}
           </Button>
-          <Grid container justify="flex-end">
+          <Grid container justifyContent="flex-end">
             <Grid item>
               <Button onClick={switchMode}>
                 { isSignUp ? `Already have an account? Sign In` :
