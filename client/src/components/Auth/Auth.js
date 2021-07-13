@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Container, Avatar, Button, Paper, Typography, Grid } from '@material-ui/core';
 import Icon from './icon';
 import { GoogleLogin } from 'react-google-login';
@@ -9,8 +10,10 @@ import useStyles from './styles';
 
 const Auth = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
-  const [isSignUp, setIsSignUp] = useState(false); ;
+  const [isSignUp, setIsSignUp] = useState(false); 
+  
 
   const handleSubmit = () => {}
   const handleChange = () => {}
@@ -18,7 +21,14 @@ const Auth = () => {
   const switchMode = () => setIsSignUp((previsSignUp) => !previsSignUp);
 
   const responseSuccess = async (response) => {
-    console.log(response);
+    const profileData = response?.profileObj;
+    const token = response?.tokenId;
+
+    try {
+      dispatch({ type: 'AUTH', data: { profileData, token }});
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   const responseFailure = async () => {
