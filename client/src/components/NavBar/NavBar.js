@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -11,7 +11,9 @@ import useStyles from './styles';
 
 const NavBar = () => {
   const classes = useStyles();
-  const user = true;
+  const[user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+  
+  
   return (
     <div className={classes.grow}>
       <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none'}}>
