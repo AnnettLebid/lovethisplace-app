@@ -1,18 +1,37 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import {Link} from 'react-router-dom';
+
 import useStyles from './styles';
 
 
 const NavBar = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const location = useLocation();
+
   const[user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
   
+  useEffect(() => {
+    const token = user?.token;
+
+    setUser(JSON.parse(localStorage.getItem('profile')));
+  }, [location]);
+
+  const logOut = () => {
+    dispatch ({ type: 'LOGOUT' });
+
+    history.push('/');
+
+    setUser(null);
+  }
   
   return (
     <div className={classes.grow}>
@@ -35,7 +54,8 @@ const NavBar = () => {
                   <AccountCircle />
                 </IconButton>
                 <div>
-                  <Button className={classes.loginButton} component={Link} to="/auth" variant="outlined" color="inherit">Logout</Button>
+                  <Button className={classes.loginButton} component={Link} to="/auth" variant="outlined" color="inherit"
+                  onClick={logOut}>Logout</Button>
                 </div>
               </div>              
             </div>
