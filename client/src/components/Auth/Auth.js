@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from "react-router-dom";
 import { Container, Avatar, Button, Paper, Typography, Grid } from '@material-ui/core';
 import Icon from './icon';
 import { GoogleLogin } from 'react-google-login';
@@ -13,7 +14,8 @@ const Auth = () => {
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const [isSignUp, setIsSignUp] = useState(false); 
-  
+
+  const history = useHistory();  
 
   const handleSubmit = () => {}
   const handleChange = () => {}
@@ -26,6 +28,8 @@ const Auth = () => {
 
     try {
       dispatch({ type: 'AUTH', data: { profileData, token }});
+
+      history.push('/'); //redirect to main page
     } catch (error) {
       console.log(error);
     }
