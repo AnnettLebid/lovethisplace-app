@@ -1,31 +1,38 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 import { Container, Avatar, Button, Paper, Typography, Grid } from '@material-ui/core';
 import Icon from './icon';
 import { GoogleLogin } from 'react-google-login';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Input from './Input';
+import { signin, signup } from '../../actions/auth';
 
 import useStyles from './styles';
 
-const initialState = {firstName: '', lastName: '', email: '', password: '', confirmPassword: ''}
+const initialState = {firstName: '', lastName: '', email: '', password: '', confirmPassword: ''};
 
 const Auth = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const [isSignUp, setIsSignUp] = useState(false); 
-  const [loginData, setLoginData] = useState(initialState);
+  const [formData, setFormData] = useState(initialState);
 
   const history = useHistory();  
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(loginData); 
+    
+    if(isSignUp){
+      dispatch(signup(formData, history))
+    } else {
+      dispatch(signin(formData, history))
+    }
   }
+
   const handleChange = (event) => {
-    setLoginData({ ...loginData, [event.target.name]: event.target.value });
+    setFormData({ ...formData, [event.target.name]: event.target.value });
   }
   const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
   const switchMode = () => setIsSignUp((previsSignUp) => !previsSignUp);
