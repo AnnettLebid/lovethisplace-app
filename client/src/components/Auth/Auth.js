@@ -9,16 +9,24 @@ import Input from './Input';
 
 import useStyles from './styles';
 
+const initialState = {firstName: '', lastName: '', email: '', password: '', confirmPassword: ''}
+
 const Auth = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const [isSignUp, setIsSignUp] = useState(false); 
+  const [loginData, setLoginData] = useState(initialState);
 
   const history = useHistory();  
 
-  const handleSubmit = () => {}
-  const handleChange = () => {}
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(loginData); 
+  }
+  const handleChange = (event) => {
+    setLoginData({ ...loginData, [event.target.name]: event.target.value });
+  }
   const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
   const switchMode = () => setIsSignUp((previsSignUp) => !previsSignUp);
 
