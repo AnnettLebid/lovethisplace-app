@@ -6,8 +6,7 @@ import useStyles from './styles';
 import { createPost, updatePost } from '../../actions/posts';
 
 const Form = ({ currentId, setCurrentId }) => {
-  const [postData, setPostData] = useState({
-    creator: '',
+  const [postData, setPostData] = useState({    
     city: '',
     title: '',
     message: '',
@@ -18,6 +17,7 @@ const Form = ({ currentId, setCurrentId }) => {
 
   const dispatch = useDispatch();
   const classes = useStyles();
+  const user = JSON.parse(localStorage.getItem('profile'));
 
   useEffect(() => {
     if (post) setPostData(post);
@@ -27,16 +27,16 @@ const Form = ({ currentId, setCurrentId }) => {
     e.preventDefault();
 
     if(currentId) {
-      dispatch(updatePost(currentId, postData));
+      dispatch(updatePost(currentId, { ...postData, name: user?.result?.name}));
     } else {      
-      dispatch(createPost(postData));
+      dispatch(createPost({ ...postData, name: user?.result?.name }));
     }
     clear();
   }
 
   const clear = () => {
     setCurrentId(null);
-    setPostData({creator: '', city: '', title: '', message: '', tags: '', selectedFile: ''});
+    setPostData({ city: '', title: '', message: '', tags: '', selectedFile: '' });
   }
 
   return(
@@ -46,15 +46,7 @@ const Form = ({ currentId, setCurrentId }) => {
         noValidate 
         className={`${classes.root} ${classes.form}`} 
         onSubmit={handleSubmit}>
-        <Typography variant="h6">{currentId ? `Edit a loveplace` : `Create a new loveplace`}</Typography>
-        <TextField 
-          name="creator" 
-          variant="outlined" 
-          label="Creator" 
-          fullWidth
-          value={postData.creator}
-          onChange={(e) => setPostData({ ...postData, creator: e.target.value })}
-        />
+        <Typography variant="h6">{currentId ? `Edit a loveplace` : `Create a new loveplace`}</Typography>       
          <TextField 
           name="city" 
           variant="outlined" 
