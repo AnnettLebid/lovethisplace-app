@@ -16,4 +16,7 @@ export default makeStyles((theme) => ({
     color: 'inherit',
     margin: '1rem',
   },
+  userName: {
+    padding: '1rem',
+  }
 }));
