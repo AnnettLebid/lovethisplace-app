@@ -53,7 +53,7 @@ const NavBar = () => {
                 >
                   <AccountCircle />
                 </IconButton>
-                <Typography className={classes.userName} variant="h6">{user.result.name}</Typography>
+                <Typography className={classes.userName} variant="h6">{`${user.profileData.givenName} ${user.profileData.familyName}`}</Typography>
                 <div>
                   <Button className={classes.loginButton} component={Link} to="/auth" variant="outlined" color="inherit"
                   onClick={logOut}>Logout</Button>
