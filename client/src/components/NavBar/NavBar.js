@@ -6,7 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-import AccountCircle from '@material-ui/icons/AccountCircle';
+import Avatar from '@material-ui/core/Avatar';
 
 import useStyles from './styles';
 
@@ -50,8 +50,8 @@ const NavBar = () => {
                   aria-haspopup="true"
                   // onClick={}
                   color="inherit"
-                >
-                  <AccountCircle />
+                >                  
+                  <Avatar alt={`${user.profileData.givenName} ${user.profileData.familyName}`} src={user.profileData.imageUrl} />
                 </IconButton>
                 <Typography className={classes.userName} variant="h6">{`${user.profileData.givenName} ${user.profileData.familyName}`}</Typography>
                 <div>
