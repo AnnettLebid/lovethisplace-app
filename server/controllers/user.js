@@ -7,8 +7,8 @@ import User from '../models/user.js';
 export const signin = async (req, res) => {
   const { email, password } = req.body;
 
-  try {
-    existingUser = await User.findOne({ email });
+  try {   
+    const existingUser = await User.findOne({ email });
 
     if (!existingUser) { return res.status(404).json({ message: "User doesn't exist" })}
 
@@ -16,8 +16,8 @@ export const signin = async (req, res) => {
     if (!isPasswordCorrect){ return res.status(404).json({ message: "Invalid password" })}
 
     const token = jwt.sign({ email: existingUser.email, id: existingUser._id }, 'test', {expiresIn: "1h"});
-
-    res.status(200).json({ result: existingUser, token });
+   
+    res.status(200).json({ profileData: existingUser, token });
     
   } catch (error) {
     res.status(500).json({ message: "Something went wrong..."});
@@ -25,24 +25,24 @@ export const signin = async (req, res) => {
 }
 
 export const signup = async (req, res) => { 
-  const { email, password, confirmPassword, firstName, lastName } = req.body;
+  const { email, password, confirmPassword, firstName, lastName } = req.body; 
 
-  try {    
-    existingUser = await User.findOne({ email });
-    
+  try {        
+    const existingUser = await User.findOne({ email });
+   
     if (existingUser) { return res.status(400).json({ message: "User already exists!" })};
 
     if(password !== confirmPassword) { return res.status(400).json({ message: "Passwords don't match!" })};
 
-    const hashedPassword = await bcrypt.hash(password, 12);
+    const hashedPassword = await bcrypt.hash(password, 12);   
    
-    const result = await User.create({ email, password: hashedPassword, name: `${firstName} ${lastName}` });
+    const profileData = await User.create({ email, password: hashedPassword, givenName: firstName, familyName: lastName });
     
-    const token = jwt.sign({ email: result.email, id: result._id }, 'test', {expiresIn: "1h"});
+    const token = jwt.sign({ email: profileData.email, id: profileData._id }, 'test', {expiresIn: "1h"});
 
-    res.status(200).json({ result, token });
+    res.status(200).json({ profileData, token });
 
-  }catch {
+  } catch {    
     res.status(500).json({ message: "Something went wrong..."});
   }
 }
