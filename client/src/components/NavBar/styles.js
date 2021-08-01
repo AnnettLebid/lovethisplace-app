@@ -18,5 +18,8 @@ export default makeStyles((theme) => ({
   },
   userName: {
     padding: '1rem',
+  },
+  skyblue: {
+    backgroundColor: '#00e6e6',
   }
 }));
