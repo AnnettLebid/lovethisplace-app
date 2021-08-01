@@ -50,8 +50,8 @@ const NavBar = () => {
                   aria-haspopup="true"
                   // onClick={}
                   color="inherit"
-                >                  
-                  <Avatar alt={`${user.profileData.givenName} ${user.profileData.familyName}`} src={user.profileData.imageUrl} />
+                >                                   
+                  <Avatar className={classes.skyblue} alt={`${user.profileData.givenName} ${user.profileData.familyName}`} src={user.profileData.imageUrl}>{user.profileData.givenName.charAt(0)}</Avatar>
                 </IconButton>
                 <Typography className={classes.userName} variant="h6">{`${user.profileData.givenName} ${user.profileData.familyName}`}</Typography>
                 <div>
