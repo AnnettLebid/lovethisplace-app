@@ -27,9 +27,9 @@ const Form = ({ currentId, setCurrentId }) => {
     e.preventDefault();
 
     if(currentId) {
-      dispatch(updatePost(currentId, { ...postData, name: user?.result?.name}));
+      dispatch(updatePost(currentId, { ...postData, name: user?.profileData?.givenName}));
     } else {      
-      dispatch(createPost({ ...postData, name: user?.result?.name }));
+      dispatch(createPost({ ...postData, name: user?.profileData?.givenName }));
     }
     clear();
   }
@@ -37,6 +37,16 @@ const Form = ({ currentId, setCurrentId }) => {
   const clear = () => {
     setCurrentId(null);
     setPostData({ city: '', title: '', message: '', tags: '', selectedFile: '' });
+  }
+
+  if(!user?.profileData?.givenName) {
+    return (
+      <Paper className={classes.parper}>
+        <Typography variant="h6" align="center">
+          Please Sign In
+        </Typography>
+      </Paper>
+    )
   }
 
   return(
