@@ -38,7 +38,9 @@ const Auth = () => {
   const switchMode = () => setIsSignUp((previsSignUp) => !previsSignUp);
 
   const responseSuccess = async (response) => {
+    
     const profileData = response?.profileObj;
+    
     const token = response?.tokenId;
 
     try {
@@ -92,6 +94,7 @@ const Auth = () => {
             )}
             onSuccess={responseSuccess}
             onFailure={responseFailure}
+            cookiePolicy="single_host_origin"
           />
           <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
             {isSignUp ? "Sign Up" : "Sign In"}
