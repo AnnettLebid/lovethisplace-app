@@ -12,6 +12,9 @@ import { deletePost, likePost } from '../../../actions/posts';
 const Post = ({ post, setCurrentId }) => {  
   const classes = useStyles();
   const dispatch = useDispatch();
+  console.log(post.creator)
+
+  const user = JSON.parse(localStorage.getItem('profile'));
 
   return( 
     <Card className={classes.card}  style={{transition:'ease 0.5s', borderRadius: '15px'}}>
@@ -44,9 +47,11 @@ const Post = ({ post, setCurrentId }) => {
             <FavoriteBorderIcon fontSize="small" color="secondary" onClick={() => dispatch(likePost(post._id))} />            
             &nbsp;{post.likeCount}
           </Button>
-          <Button size="small" color="primary">
-            <DeleteIcon fontSize="small"  onClick={() => dispatch(deletePost(post._id))}/>                       
-          </Button>
+          {(user?.profileData?.googleId === post?.creator || user?.profileData?._id === post?.creator) && (
+            <Button size="small" color="primary">
+              <DeleteIcon fontSize="small"  onClick={() => dispatch(deletePost(post._id))}/>                       
+            </Button>
+          )}
         </CardActions>
     </Card>
   )
